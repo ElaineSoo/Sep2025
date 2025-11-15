@@ -1,0 +1,129 @@
+<html>
+<head><title>Application Form</title>
+<meta name=viewport content=width=device-width, initial-scale=1.0>
+
+<script>
+function validateForm(){
+ //to validate text-do not allow empty
+ let x=document.MyFirstForm.fname.value;
+ if(x==""){
+     alert("Please provide your First Name!");
+   return false;
+ }
+ //to validate text-only allow alphabet characters
+ let y=document.MyFirstForm.lname.value
+ var letters=/^[A-Za-z]/;
+ if(!y.match(letters))
+  {
+   alert("Please input alphabet characters for Last Name.");
+   return false;
+ }
+ //to validate text-only allow numbers
+ let z=document.MyFirstForm.phone.value
+ var phonenumber=/^[0-9]/;
+ if(!z.match(phonenumber))
+  {
+   alert("Phone number must contain in numbers.");
+   return false;
+ }
+ if((MyFirstForm.gender[0].checked==false)&&(MyFirstForm[1].checked==false))
+  {
+  alert("Please choose Gender:Male or Female");
+  return false;
+ }
+}
+</script>
+
+</head>
+<body topmargin=50 background-color: #FFDAB9; color: #000000
+font-family: Arial;
+font-size: 18;>
+<center>
+<form name=MyFirstForm onsubmit="return validateForm()">
+<p>
+
+<table>
+<br>
+<caption>Addmission & Application Form</caption>
+<tr>
+<td>
+<b>First Name:</b>
+<input type=text name=fname  placeholder='Input your first name' size=60 maxlength=10> 
+</td>
+</tr>
+
+<tr>
+<td>
+<b>Last Name:</b>
+<input type=text name=lname placeholder='Input your last name' size=60 maxlength=10>
+</td>
+</tr>
+
+<tr>
+<td>
+<b>Email Address:</b>
+<input type=text name=email placeholder='example@gmail.com' size=60>
+</td>
+</tr>
+
+<tr>
+<td>
+<b>Phone Number</b>
+<input type=text name=phone placeholder='012-1234567' size=60>
+</td>
+</tr>
+
+<tr>
+<td>
+<b>Gender</b>
+<input type=radio name=gender value=Male>Male
+<input type=radio name=gender value=Female>Female
+</td>
+</tr>
+
+<tr>
+<td>
+<b>Date of birth:</b>
+<input type=date name=dob>
+</td>
+</tr>
+
+<tr>
+<td>
+<b>Select Programme:</b>
+<Select>
+<option value='0'>-List of Course-</option>
+<option value='DSD'>-Diploma in Software Development-</option>
+<option value='DIN'>-Diploma in Networking-</option>
+<option value='DCS'>-Diploma in Computer Science-</option>
+<option value='BCN'>-Bachelor in Computer Science-</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>
+<b>Prefer Intake Month:</b>
+<input type=radio name=month value=January>January
+<input type=radio name=month value=April>April
+<input type=radio name=month value=September>September
+</td>
+</tr>
+
+<tr>
+<td>
+<b>Additional Message:</b>
+<textarea rows=5 cols=60 name=message placeholder='Write your message here'></textarea></td>
+</tr>
+</table>
+<br>
+<br>
+<input type=submit value=Submit>
+<input type=submit value=Reset>
+<br>
+<br>
+</form>
+</center>
+</body>
+</html>
+
