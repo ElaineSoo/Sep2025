@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>Room Reservation Form</title>
+<link rel=icon href=doraemon.jpg type=image/jpg>
+<meta name=viewport content=width=device-width, initial-scale=1.0>
+<link rel="stylesheet"href="Tutorial 14.css">
+
+<script>
+function validateForm(){
+//to validate text-do not allow empty
+let x=document.RoomReservations.fname.value;
+if(x==""){
+    alert("Please provide your First Name!");
+  return false;
+ }
+
+//to validate text- only allow number
+let y= document.RoomReservations.icno.value;
+var letters=/^[0-9]+$/;
+if(!y.match(letters))
+{
+ alert("IC No. must contain numbers only!");
+ return false;
+ }
+//to validate radio button - must select
+if((RoomReservations.room[0].checked==false)&&(RoomReservations.room[1].checked==false))
+{
+alert("Please choose Room Preference:Deluxe or Suite");
+return False;
+ }
+}
+</script>
+
+</head>
+
+<body topmargin="50">
+<center>
+<table border=3>
+<tr>
+<td>
+<br>
+<form name="RoomReservations" onsubmit="return validateForm()">
+
+<h2 style="align:center;">Room Reservations</h2>
+<table border=2>
+<tr>
+<td colspan="4" style="text-align: left; color: blue;"><u>Personal Details</u></td>
+</tr>
+
+<tr>
+<td style="width:150px;">Full name:</td>
+<td style="width:300px;">:<input type=text name=fname size=50></td>
+<td style="width:150px;">IC No.</td>
+<td style="width:300px;">:<input type=text name=icno size=50></td>
+</tr>
+
+<tr>
+<td style="width:150px;">Email Address</td>
+<td style="width:300px;">:<input type=email name=eadd></td>
+<td style="width:150px;">Contact No.</td>
+<td style="width:300px;">:<input type=text name=contno></td>
+</tr>
+</table>
+
+<br>
+
+<table border=2>
+<tr>
+<td colspan="4" style="color:blue;"><u>Reservations</u></td>
+</tr>
+
+<tr>
+<td style="width:150px;">Number of Room(s)</td>
+<td style="width:300px;">:
+<select>
+<option value='0'>-Selection-</option>
+<option value='1'>1</option>
+<option value='2'>2</option>
+<option value='3'>3</option>
+<option value='4'>4</option>
+</select>
+</td>
+<td style="width:150px;">Payment Method</td>
+<td style="width:300px;">
+<input type=radio name=pay value=Cash>Cash
+<input type=radio name=pay value=TNG>TNG
+</td>
+</tr>
+
+<tr>
+<td style="width:150px;">Number of Adult(s)</td>
+<td style="width:300px;">:
+<select>
+<option value='0'>-Selection-</option>
+<option value='1-3'>1-3</option>
+<option value='4-6'>4-6</option>
+<option value='7-9'>7-9</option>
+<option value='10-12'>10-12</option>
+</select>
+</td>
+<td rowspan=5 style="width:150px;">Do you have any special requests?</td>
+<td rowspan=5><textarea rows=8 cols=80 name=sperequests></textarea>
+</td>
+</tr>
+
+<tr>
+<td style="width:150px;">Number of Children</td>
+<td style="width:300px;">:
+<select>
+<option value='0'>-Selection-</option>
+<option value='1-3'>1-3</option>
+<option value='4-6'>4-6</option>
+<option value='7-9'>7-9</option>
+<option value='10-12'>10-12</option>
+</select>
+</tr>
+
+<tr>
+<td style="width:150px;">Check-in Date</td>
+<td style="width:300px;">: <input type=date name=cid>
+</tr>
+
+<tr>
+<td style="width:150px;">Check-out Date</td>
+<td style="width:300px;">: <input type=date name=cod>
+</tr>
+
+<tr>
+<td style="width:150px;">Room Preference</td>
+<td style="width:300px;">: <input type=radio name=room value=Deluxe>Deluxe
+<input type=radio name=room value=Suite>Suite
+</tr>
+
+</table>
+<br>
+<br>
+<div class="form-buttons">
+<input type=submit value=Submit>
+<input type=submit value=Reset>
+</table>
+
+</form>
+</td>
+</tr>
+</table>
+
+</center>
+</body>
+</html>
