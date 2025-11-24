@@ -1,0 +1,27 @@
+body {
+  font-family: Time News Roman;
+  color: #02a1f9;
+  background-color: #c6ccff;
+  text-align: center;
+  padding: 30px;
+  
+}
+
+h2 {
+  color: white;
+  background: #dde0ea;
+  text-shadow: 2px 3px #dde0ea;
+}
+
+input[type="number"] {
+	padding: 6px;
+	font-size: 16px;
+	border: 1px solid black;
+}
+button {
+	padding: 8px 16px;
+	margin : 6px;
+	border: none;
+	font-size: 16px;
+	background-color: #f3f4d6;
+}
