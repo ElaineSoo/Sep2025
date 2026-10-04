@@ -1,0 +1,290 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Random 4 Digit Draw</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 60px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-top: 30px;
+        }
+
+        .display {
+            font-size: 70px;
+            font-weight: bold;
+            letter-spacing: 15px;
+            margin: 25px;
+        }
+
+        .digit {
+            display: inline-block;
+            width: 70px;
+        }
+
+        /* Drawing animation */
+
+        .drawing {
+            animation: shake 0.1s infinite;
+        }
+
+        @keyframes shake {
+
+            0% {
+                transform: translateY(-5px);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+
+            100% {
+                transform: translateY(-5px);
+            }
+
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 18px;
+            margin: 8px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .section {
+            margin-top: 50px;
+            border-top: 2px solid #ccc;
+            padding-top: 30px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<h1>Random 4 Digit Draw</h1>
+
+
+<!-- ========================= -->
+<!-- One by One Draw -->
+<!-- ========================= -->
+
+<div class="title">
+    One by One Draw
+</div>
+
+<div id="singleDisplay" class="display">
+
+    <span class="digit">?</span>
+    <span class="digit">?</span>
+    <span class="digit">?</span>
+    <span class="digit">?</span>
+
+</div>
+
+<button onclick="drawNumber()">
+    DRAW
+</button>
+
+
+<!-- ========================= -->
+<!-- Four Digits Draw -->
+<!-- ========================= -->
+
+<div class="section">
+
+    <div class="title">
+        Four Digits Draw
+    </div>
+
+    <div id="allDisplay" class="display">
+
+        <span class="digit">?</span>
+        <span class="digit">?</span>
+        <span class="digit">?</span>
+        <span class="digit">?</span>
+
+    </div>
+
+    <button onclick="drawAll()">
+        ALL DRAW
+    </button>
+
+</div>
+
+
+<br>
+
+<button onclick="resetGame()">
+    RESET
+</button>
+
+
+<script>
+
+
+// Generate random 4-digit number
+let number = "";
+
+for (let i = 0; i < 4; i++) {
+
+    number += Math.floor(Math.random() * 10);
+
+}
+
+
+let position = 0;
+
+let drawing = false;
+
+let allDrawing = false;
+
+
+// =================================
+// One by One Draw
+// =================================
+
+function drawNumber() {
+
+    // Stop if all digits are shown
+    if (position >= 4 || drawing || allDrawing) {
+        return;
+    }
+
+    drawing = true;
+
+    let digits =
+        document.getElementById("singleDisplay")
+        .getElementsByClassName("digit");
+
+    let counter = 0;
+
+
+    // Start random animation
+
+    let animation = setInterval(function() {
+
+        let randomDigit =
+            Math.floor(Math.random() * 10);
+
+        digits[position].innerText = randomDigit;
+
+        digits[position].classList.add("drawing");
+
+        counter++;
+
+
+        // Stop animation
+
+        if (counter >= 20) {
+
+            clearInterval(animation);
+
+            // Show the real digit
+            digits[position].innerText =
+                number[position];
+
+            digits[position].classList.remove("drawing");
+
+            // Move to next digit
+            position++;
+
+            drawing = false;
+
+        }
+
+    }, 80);
+
+}
+
+
+// =================================
+// Four Digits Draw Together
+// =================================
+
+function drawAll() {
+
+    if (allDrawing || drawing) {
+        return;
+    }
+
+    allDrawing = true;
+
+    let digits =
+        document.getElementById("allDisplay")
+        .getElementsByClassName("digit");
+
+    let counter = 0;
+
+
+    // Start animation
+
+    let animation = setInterval(function() {
+
+        for (let i = 0; i < 4; i++) {
+
+            let randomDigit =
+                Math.floor(Math.random() * 10);
+
+            digits[i].innerText = randomDigit;
+
+            digits[i].classList.add("drawing");
+
+        }
+
+        counter++;
+
+
+        // Stop animation
+
+        if (counter >= 20) {
+
+            clearInterval(animation);
+
+
+            // Show all 4 digits
+
+            for (let i = 0; i < 4; i++) {
+
+                digits[i].innerText = number[i];
+
+                digits[i].classList.remove("drawing");
+
+            }
+
+            allDrawing = false;
+
+        }
+
+    }, 80);
+
+}
+
+
+// =================================
+// Reset
+// =================================
+
+function re
+```
